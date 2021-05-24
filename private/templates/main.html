@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>NatureGo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gain points for your findings!" />
+    <meta name="author" content="Man Sun A01074365" />
+    <meta name="author" content="Richard Mac A00990553" />
+    <meta name="author" content="Neeraj Kumar Bodi A01260109" />
+    <meta name="author" content="Miaozhe Wang A00741736" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="/img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#" id="logo">NatureGo</a>
+                <div id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <div id="logout" class="nav-item">
+                                <form action="/logout" method="get">
+                                    <input type="submit" value="Logout" />
+                                </form>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+    <div id="name"></div>
+    <div id="chatroom">
+        <div id="room">s</div>
+        <div id="chatWindow">
+            <div id="chatContent">ss</div>
+
+            <form id="chatForm">
+                <textarea id="msg" placeholder="Your message here"></textarea>
+                <input type="button" id="send" value="Send" />
+            </form>
+        </div>
+    </div>
+    <footer id="footer"></footer>
+    <script src="http://localhost:8000/socket.io/socket.io.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/chat.js"></script>
+
+</body>
+
+</html>
