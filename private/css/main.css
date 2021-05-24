@@ -16,18 +16,39 @@
 }
 
 #room {
+    display: block;
     border: 1px solid #c4c4c4;
 }
 
 
 #chatWindow {
-    height: 100%;
     display: grid;
     grid-template-rows: 80% 20%;
 }
+
 #chatContent {
+    height: 100%;
     overflow-y: scroll;
 }
+
 #chatForm {
     border: 1px solid #c4c4c4;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#tips {
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    text-align: center;
+}
+
+#msg {
+    width: 80%;
+    height: 80%;
+    outline: none;
 }

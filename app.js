@@ -150,58 +150,59 @@ async function checkUser(user, password) {
     })
 }
 
-app.get('/main', function(req, res) {
-    if (req.session.loggedIn){
+var userCount = 0;
+
+io.on('connect', function (socket) {
+    userCount++;
+    socket.on('addUser', function (name) {
+        socket.userName = name;
+        io.emit('user_joined', {
+            user: socket.userName,
+            numOfUsers: userCount
+        });
+        console.log('Connected users:', userCount);
+
+        socket.on('disconnect', function (data) {
+            userCount--;
+            io.emit('user_left', {
+                user: socket.userName,
+                numOfUsers: userCount
+            });
+
+            console.log('Connected users:', userCount);
+        });
+
+        socket.on('chatting', function (data) {
+
+            console.log('User', data.name, 'Message', data.message);
+
+
+            io.emit("chatting", {
+                user: socket.userName,
+                text: data.message
+            });
+
+
+
+
+        });
+    })
+
+
+});
+app.get('/main', function (req, res) {
+    if (req.session.loggedIn) {
         let mainPage = fs.readFileSync('./private/templates/main.html');
         let mainDom = new JSDOM(mainPage);
         let $main = require('jquery')(mainDom.window);
-        $main('#name').html('<p>' + req.session.account + '</p>')
-        var userCount = 0;
+        $main('#name').html(req.session.account)
 
-        io.on('connect', function(socket) {
-            userCount++;
-            let str = req.session.account;
-            socket.userName = str;
-            io.emit('user_joined', { user: socket.userName, numOfUsers: userCount });
-            console.log('Connected users:', userCount);
-        
-            socket.on('disconnect', function(data) {
-                userCount--;
-                io.emit('user_left', { user: socket.userName, numOfUsers: userCount });
-        
-                console.log('Connected users:', userCount);
-            });
-        
-            socket.on('chatting', function(data) {
-        
-                console.log('User', data.name, 'Message', data.message);
-        
-                // if you don't want to send to the sender
-                //socket.broadcast.emit({user: data.name, text: data.message});
-        
-                if(socket.userName == "anonymous") {
-        
-        
-                    io.emit("chatting", {user: data.name, text: data.message,
-                        event: socket.userName + " is now known as " + data.name});
-                    socket.userName = data.name;
-        
-                } else {
-        
-                    io.emit("chatting", {user: socket.userName, text: data.message});
-        
-                }
-        
-        
-            });
-        
-        });
         res.send(mainDom.serialize());
     } else {
         res.redirect("/");
     }
 
-    
+
 })
 
 app.get('/logout', function (req, res) {
@@ -217,4 +218,3 @@ let PORT = 8000;
 server.listen(PORT, function () {
     console.log('Listening on port ' + PORT + '!');
 })
-
