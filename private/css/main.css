@@ -1,6 +1,33 @@
 #chatroom {
     display: grid;
     grid-template-columns: 30% 70%;
-    grid-template-rows: 80% 20%;
+    border: 1px solid #c4c4c4;
+    min-height: 500px;
+    width: 80%;
+    margin: 0 auto;
 }
 
+.navbar {
+    background-color: #04443c;
+}
+
+#logo {
+    color: white;
+}
+
+#room {
+    border: 1px solid #c4c4c4;
+}
+
+
+#chatWindow {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 80% 20%;
+}
+#chatContent {
+    overflow-y: scroll;
+}
+#chatForm {
+    border: 1px solid #c4c4c4;
+}
