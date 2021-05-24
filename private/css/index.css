@@ -1,0 +1,75 @@
+body {
+    background-image: url('/img/trees.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+  
+  }
+  
+  form {
+    border: 3px solid #f1f1f1;
+    background-color: #76c893;
+    padding: 30px;
+    margin: 50px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  }
+  
+  input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+  
+  #submit {
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  form h3 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: white;
+  }
+  
+  form input {
+    width: 100%;
+    margin-bottom: 10px;
+    height: 40px;
+    font-size: 15px;
+    background-color: #f2f2f2;
+  }
+  
+  #login {
+    margin: 0 auto;
+    width: 60%;
+    max-width: 500px;
+  }
+  
+  #submit {
+    cursor: pointer;
+    height: 70px;
+    font-size: 25px;
+    background-color: #04443c;
+    color: white;
+  }
+  
+  #footer {
+    color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }

@@ -1,4 +1,16 @@
+@import url("https://fonts.googleapis.com/css?family=Hind");
+body {
+    font-family: 'Hind';
+    background-image: url('/img/chatBg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
 #chatroom {
+    filter:drop-shadow(8px 8px 10px gray);
+    background-color: #76c893;
+    opacity: 0.9;
     display: grid;
     grid-template-columns: 30% 70%;
     border: 1px solid #c4c4c4;
@@ -7,6 +19,25 @@
     margin: 0 auto;
 }
 
+button {
+    color: #444444;
+    background: #F3F3F3;
+    border: 1px #DADADA solid;
+    padding: 5px 10px;
+    border-radius: 2px;
+    font-weight: bold;
+    font-size: 9pt;
+}
+
+button:disabled {
+    background: #dddddd;
+    color: lightgrey;
+}
+#name {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+}
 .navbar {
     background-color: #04443c;
 }
@@ -28,6 +59,7 @@
 
 #chatContent {
     height: 100%;
+    max-height: 400px;
     overflow-y: scroll;
 }
 
@@ -42,13 +74,34 @@ p {
 
 #tips {
     display: flex;
-    flex-direction:column;
+    flex-direction: column;
     justify-content: center;
     text-align: center;
 }
 
 #msg {
     width: 80%;
-    height: 80%;
+    height: 100%;
     outline: none;
+}
+
+#send {
+    background-color: rgb(89, 126, 238);
+    position: relative;
+    top: -42px;
+    width: 20%;
+    height: 100%;
+}
+
+textarea {
+    resize: none;
+}
+
+
+#footer {
+    color: white;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }

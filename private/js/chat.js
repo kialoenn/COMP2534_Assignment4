@@ -74,8 +74,8 @@ $("#room1Button").on('click', function(e) {
         if(data.event) {
             $("#chatContent").append("<p style='color: orange;'>" + data.event + "</p>");
         }
-        
-
+        var elem = document.getElementById('chatContent');
+        elem.scrollTop = elem.scrollHeight;
     });
 
     $("#send").click(function() {

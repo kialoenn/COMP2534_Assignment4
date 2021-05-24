@@ -175,11 +175,9 @@ io.on('connect', function (socket) {
         socket.on('chatting', function (data) {
 
             console.log('User', data.name, 'Message', data.message);
-
-
             io.emit("chatting", {
                 user: socket.userName,
-                text: data.message
+                text: data.message.replace(":)", "&#128522;")
             });
 
 
