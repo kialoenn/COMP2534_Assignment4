@@ -17,7 +17,11 @@ $(function () {
                 if (doc.status == 'success') {
                     window.location.replace('/main')
                     console.log("login");
-                } else {
+                } else if(doc.status == 'new') {
+                    $("#loginMessage").html(doc.msg);
+                    setTimeout(function(){window.location.replace('/main');}, 1000)
+                }
+                else {
                     $("#loginMessage").html(doc.msg);
                 }
             }

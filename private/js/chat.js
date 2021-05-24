@@ -66,7 +66,7 @@ $("#room1Button").on('click', function(e) {
     socket.on('chatting', function(data) {
         let beginTag = "<b>";
         if ($("#name").text() == data.user) {
-            beginTag = "<p style='color: deepskyblue;'><b>";
+            beginTag = "<p style='color: midnightblue;'><b>";
             $("#chatContent").append(beginTag + data.user + "</b>: " + data.text + "</p>");
         } else {
             $("#chatContent").append("<p style='text-align: right;'>" + data.text + " :" + beginTag + data.user + "</b></p>");

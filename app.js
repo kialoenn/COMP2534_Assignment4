@@ -92,7 +92,7 @@ app.post('/authentication', async function (req, res) {
         req.session.save();
         res.send({
             status: "new",
-            msg: "Created a new Account!"
+            msg: "Creating new Account, Please wait 1 second"
         })
     } else {
         req.session.loggedIn = true;
@@ -177,7 +177,7 @@ io.on('connect', function (socket) {
             console.log('User', data.name, 'Message', data.message);
             io.emit("chatting", {
                 user: socket.userName,
-                text: data.message.replace(":)", "&#128522;")
+                text: data.message.replace(":)", "&#9786;")
             });
 
 
