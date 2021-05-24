@@ -214,7 +214,7 @@ app.get('/logout', function (req, res) {
 })
 // RUN SERVER
 let PORT = 8000;
-app.listen(PORT, function () {
+server.listen(PORT, function () {
     console.log('Listening on port ' + PORT + '!');
 })
 

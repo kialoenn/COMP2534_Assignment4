@@ -2,7 +2,7 @@ $(document).ready(function() {
     "use strict";
 
 // connect to  scoket.io
-    let socket = io.connect('/main');
+    let socket = io.connect('/');
 
     socket.on('user_joined', function(data) {
         let beginTag = "<p style='color: bisque;'>";
