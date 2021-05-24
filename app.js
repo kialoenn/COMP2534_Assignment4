@@ -44,6 +44,8 @@ app.get('/', function (req, res) {
 })
 
 
+
+
 async function initDB() {
 
     const mysql = require('mysql2/promise');
@@ -154,12 +156,52 @@ app.get('/main', function(req, res) {
         let mainDom = new JSDOM(mainPage);
         let $main = require('jquery')(mainDom.window);
         $main('#name').html('<p>' + req.session.account + '</p>')
-        let userCount = 0;
+        var userCount = 0;
 
+        io.on('connect', function(socket) {
+            userCount++;
+            let str = req.session.account;
+            socket.userName = str;
+            io.emit('user_joined', { user: socket.userName, numOfUsers: userCount });
+            console.log('Connected users:', userCount);
+        
+            socket.on('disconnect', function(data) {
+                userCount--;
+                io.emit('user_left', { user: socket.userName, numOfUsers: userCount });
+        
+                console.log('Connected users:', userCount);
+            });
+        
+            socket.on('chatting', function(data) {
+        
+                console.log('User', data.name, 'Message', data.message);
+        
+                // if you don't want to send to the sender
+                //socket.broadcast.emit({user: data.name, text: data.message});
+        
+                if(socket.userName == "anonymous") {
+        
+        
+                    io.emit("chatting", {user: data.name, text: data.message,
+                        event: socket.userName + " is now known as " + data.name});
+                    socket.userName = data.name;
+        
+                } else {
+        
+                    io.emit("chatting", {user: socket.userName, text: data.message});
+        
+                }
+        
+        
+            });
+        
+        });
         res.send(mainDom.serialize());
     } else {
         res.redirect("/");
     }
+
+    
 })
 
 app.get('/logout', function (req, res) {

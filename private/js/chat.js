@@ -1,11 +1,8 @@
 $(document).ready(function() {
     "use strict";
 
-    /* This happens when the document is loaded. We start off with http://localhost:8000
-       And if the browser supports this, we get a new connection as wellat:
-       ws://localhost:8000
-     */
-    let socket = io.connect('/');
+// connect to  scoket.io
+    let socket = io.connect('/main');
 
     socket.on('user_joined', function(data) {
         let beginTag = "<p style='color: bisque;'>";
@@ -18,11 +15,11 @@ $(document).ready(function() {
         }
         if(numOfUsers < 2) {
 
-            $("#chat_content").append("<p>Just you, no one else.</p>");
+            $("#chatContent").append("<p>Please wait for someone to join.</p>");
 
         } else {
 
-            $("#chat_content").append(beginTag + data.user
+            $("#chatContent").append(beginTag + data.user
                 + " connected. There are " + numOfUsers + " " + userStr + ".</p>");
 
         }
